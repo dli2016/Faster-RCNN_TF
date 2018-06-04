@@ -1,5 +1,8 @@
 import tensorflow as tf
 from tensorflow.python.framework import ops
+import sys
+import os.path as osp
+sys.path.append(osp.dirname(__file__))
 import roi_pooling_op
 import pdb
 

@@ -15,7 +15,8 @@ import scipy.sparse
 import PIL
 import math
 import os
-import cPickle
+#import cPickle
+import pickle as pk
 import pdb
 
 
@@ -29,8 +30,9 @@ def prepare_roidb(imdb):
     cache_file = os.path.join(imdb.cache_path, imdb.name + '_gt_roidb_prepared.pkl')
     if os.path.exists(cache_file):
         with open(cache_file, 'rb') as fid:
-            imdb._roidb = cPickle.load(fid)
-        print '{} gt roidb prepared loaded from {}'.format(imdb.name, cache_file)
+            #imdb._roidb = cPickle.load(fid)
+            imdb._roidb = pk.load(fid)
+        print('{} gt roidb prepared loaded from {}'.format(imdb.name, cache_file))
         return
 
     roidb = imdb.roidb
@@ -88,8 +90,9 @@ def prepare_roidb(imdb):
         roidb[i]['info_boxes'] = info_boxes
 
     with open(cache_file, 'wb') as fid:
-        cPickle.dump(roidb, fid, cPickle.HIGHEST_PROTOCOL)
-    print 'wrote gt roidb prepared to {}'.format(cache_file)
+        #cPickle.dump(roidb, fid, cPickle.HIGHEST_PROTOCOL)
+        pk.dump(roidb, fid, pk.HIGHEST_PROTOCOL)
+    print('wrote gt roidb prepared to {}'.format(cache_file))
 
 def add_bbox_regression_targets(roidb):
     """Add information needed to train bounding-box regressors."""
