@@ -10,6 +10,8 @@ For details about R-CNN please refer to the paper [Faster R-CNN: Towards Real-Ti
 
 2. Python packages you might not have: `cython`, `python-opencv`, `easydict`
 
+3. conda install gxx_linux-64 (or install GCC with proper version)
+
 ### Requirements: hardware
 
 1. For training the end-to-end version of Faster R-CNN with VGG16, 3G of GPU memory is sufficient (using CUDNN)
